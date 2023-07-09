@@ -1,0 +1,39 @@
+.ResourceApp{
+  margin: auto 32px;
+  background-color: orange;
+  border-radius: 20px;
+}
+
+.title{
+  margin-top: 24px;
+  margin-left: 32px;
+}
+
+.ResourceSection{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 24px;
+  margin-left: 32px;
+}
+
+.ResourceContent{
+  margin:auto;
+  display: flex;
+  min-width: 400px;
+  justify-content: space-around;
+  border: 2px solid black;
+}
+
+.ResourceList{
+  min-width: 180px;
+}
+.ResourceForm{
+  margin-left: 24px;
+  margin-top: 24px;
+}
+
+.Form{
+  display: flex;
+  flex-direction: column;
+}
