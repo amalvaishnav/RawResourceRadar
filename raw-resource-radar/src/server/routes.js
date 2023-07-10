@@ -13,6 +13,8 @@ router.post("/data", async (req, res) => {
   const SaveDate = new data({
     name: req.body.name,
     color: req.body.color,
+    vol: req.body.vol,
+    cost: req.body.cost,
   });
   await SaveDate.save();
   //   console.log(res);

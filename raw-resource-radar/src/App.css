@@ -1,6 +1,6 @@
 .ResourceApp{
   margin: auto 32px;
-  background-color: orange;
+  background-color: #ffa500;
   border-radius: 20px;
 }
 
@@ -15,25 +15,52 @@
   width: 100%;
   margin-top: 24px;
   margin-left: 32px;
+  padding-bottom: 32px;
 }
 
 .ResourceContent{
   margin:auto;
   display: flex;
   min-width: 400px;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 2px solid black;
+
+  @media screen and (min-width: 400px) and (max-width: 768px) {
+    min-width: 500px;
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 968px) {
+    min-width: 600px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-width: 800px;
+  }
 }
+
 
 .ResourceList{
   min-width: 180px;
+  border-right: 1px solid black;
 }
 .ResourceForm{
-  margin-left: 24px;
+  margin: auto;
   margin-top: 24px;
 }
 
 .Form{
   display: flex;
   flex-direction: column;
+}
+
+.Tile{
+  padding-bottom: 16px;
+  border-bottom: 1px solid black;
+  display: flex;
+}
+
+.Tile:hover{
+  background-color: black;
+  color: white;
 }
