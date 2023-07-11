@@ -28,17 +28,17 @@ Platform to manage and calculate expenses of raw materials
 
 # Front-end
 * Mainly used React.JS to build components on the Front end while building Components.
-* Utilized core concepts for Functional React like useEffect, useState, useContext and props.
-* Provided CSS and used Flex to organize compartments
+* Utilized core concepts for Functional React like `useEffect, useState, useContext` and `props`.
+* Provided `CSS` and used `Flex` to organize compartments
 
 # Back-end
-* REST-API server was written using Node.js and Express where routes were written(src/routes.js) to support Reading, Creating, Updating and Removing entries from the in-memory Database.
+* REST-API server was written using `Node.js and Express` where routes were written(src/routes.js) to support Reading, Creating, Updating and Removing entries from the in-memory Database.
 * To make that happen we used fundamental REST principals GET(to read), POST(to submit), PUT(to update) and DELETE(to delete) to manipulate data. 
 
 # Database (in-memory)
-* We utilized in-memory `mongodb-memory-server` node module which enables us to manipulate MongoDB(no-sql) data in-memory.
-* To support MongoDB, we have Mongoose ODM library created right for Node apps.
-* Schema/Model was created to give a structure to our Core data
+* We utilized in-memory `mongodb-memory-server` node module which enables us to manipulate `MongoDB(no-sql)` data in-memory.
+* To support MongoDB, we have `Mongoose ODM library` created right for Node apps.
+* `Schema/Model` was created to give a structure to our Core data
 
 
 * Time taken to build the app: 6-7 hours, excluding whenever a crushing error occurred which led me to add coffee breaks
