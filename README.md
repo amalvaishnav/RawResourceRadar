@@ -41,12 +41,43 @@ Platform to manage and calculate expenses of raw materials
 
 # Back-end
 * REST-API server was written using `Node.js and Express` where routes were written(src/routes.js) to support Reading, Creating, Updating and Removing entries from the in-memory Database.
-* To make that happen we used fundamental REST principals GET(to read), POST(to submit), PUT(to update) and DELETE(to delete) to manipulate data. 
+* To make that happen we used fundamental REST principals GET(to read), POST(to submit), PUT(to update) and DELETE(to delete) to manipulate data.
+
+# APIs
+* GET http://localhost:5001/data
+* POST http://localhost:5001/data
+  * Body {
+    "name":"56776",
+    "color":"56fg",
+    "vol": 3434,
+    "cost": 0.5
+    }
+ * PUT http://localhost:5001/:id
+  * Body {
+    "name":"56776",
+    "color":"56fg",
+    "vol": 3434,
+    "cost": 0.5
+    }
+ * DELETE http://localhost:5001/:id
 
 # Database (in-memory)
 * We utilized in-memory `mongodb-memory-server` node module which enables us to manipulate `MongoDB(no-sql)` data in-memory.
 * To support MongoDB, we have `Mongoose ODM library` created right for Node apps.
 * `Schema/Model` was created to give a structure to our Core data
+
+# Scope of Improvement
+* Add Unit tests for the Front end and Backend
+* Add a Security layer, be it OAuth or JWT or add a basic MD5 to mask data
+* Date picker to add delivery date for Resource Material data
+
+# Challenges and Learnings
+* Tackling API requests whilst maintaining the correct flow of data.
+* Understanding Color picker with hex values talking the API
+
+# Screen recording
+https://github.com/amalvaishnav/RawResourceRadar/assets/30755600/07e43389-603e-4e94-ae76-f3c9fee4e298
+
 
 
 * Time taken to build the app: 6-7 hours, excluding whenever a crushing error occurred which led me to add coffee breaks
