@@ -27,8 +27,12 @@ Platform to manage and calculate expenses of raw materials
     * Start the server by hitting the command `node server.js`, now we are able to listen to the server on the `http://localhost:5001` port.  Notice it's not HTTP Secured.
     * Finally, Open the browser and go to `http://localhost:3000` where we'll be able to see the application
 
+# Other Instructions
+* `src/index.js` is the main root of the Front-end app where the flow of the App starts, ResourceApp.js is the main rendering component of the visible app.
+* `server/server.js` is where the server is written and `routes.js` is where the API endpoints are implemented
 
-# Tech stack used building the app: MERN Stack
+
+# Tech stack used in building the app: MERN Stack
  * MongoDb In-memory Database
  * Express Server
  * React to create a Front end Component
@@ -67,8 +71,8 @@ Platform to manage and calculate expenses of raw materials
 * `Schema/Model` was created to give a structure to our Core data
 
 # Scope of Improvement
-* Add Unit tests for the Front end and Backend
 * Add a Security layer, be it OAuth or JWT or add a basic MD5 to mask data
+* Since I am at Capacity, I couldn't commit to performing the Unit tests despite it being an important aspect of the assignment.
 * Date picker to add delivery date for Resource Material data
 
 # Challenges and Learnings
