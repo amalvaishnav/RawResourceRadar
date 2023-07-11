@@ -53,12 +53,12 @@ Platform to manage and calculate expenses of raw materials
     "cost": 0.5
     }
  * PUT http://localhost:5001/:id
-  * Body {
-    "name":"56776",
-    "color":"56fg",
-    "vol": 3434,
-    "cost": 0.5
-    }
+    * Body {
+       "name":"56776",
+       "color":"56fg",
+       "vol": 3434,
+       "cost": 0.5
+       }
  * DELETE http://localhost:5001/:id
 
 # Database (in-memory)
