@@ -10,10 +10,10 @@ Platform to manage and calculate expenses of raw materials
 * Building a form where Resource `Name, color, volume, and Cost` inputs are given. 
 * When `Create` or `Update`button is hit, it should provide validations for each field there and shouldn't let an invalid input go through.
 * ID is the unique element available for each record, which gets allocated when the form entry is successfully submitted, then utilized throughout the app to manage CRUD Operations.
-* Upon Creating the record, it should add that record in the visible on the left with the Color and Volume entered by the user.
+* Upon Creating the record, it should add that record in the list visible on the left with the Color and Volume entered by the user.
 * Clicking each record will let the user go into the form and edit/delete that record.
-* Total Cost mentioned at the end, the formula used is: Total of each (Resource Volume * Resource Cost)
-*The `Date` component I realized at the end and the time frame won't allow me to add that hence intentionally left that field.
+* Total Cost mentioned at the end, the formula used is: Total of each (Resource Volume * Resource Cost). 
+* The `Date` component I realized at the end and the time frame won't allow me to add that hence intentionally left that field.
 
 # How to Run the app
 
