@@ -6,6 +6,13 @@ Platform to manage and calculate expenses of raw materials
   * Ability to create, update or delete any material added to the app.
   * Ability to come to know the total expense after adding details so that the user can regulate their needs.
 
+# Assumptions made about the nature of the App
+* Building a form where Resource `Name, color, volume, and Cost` inputs are given. The `Date` component I realized at the end and the time frame won't allow me to add that hence intentionally left that field.
+* When `Create` or `Update`button is hit, it should provide validations for each field there and shouldn't let an invalid input go through.
+* ID is the unique element available for each record, which gets allocated when the form entry is successfully submitted, then utilized throughout the app to manage CRUD Operations.
+* Upon Creating the record, it should add that record in the visible on the left with the Color and Volume entered by the user.
+* Clicking each record will let the user go into the form and edit/delete that record.
+* Total Cost mentioned at the end, the formula used is: Total of each (Resource Volume * Resource Cost)
 
 # How to Run the app
 
