@@ -1,16 +1,16 @@
-.ResourceForm {
+.resourceForm {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     padding: 16px 24px;
 }
 
-.ColorComponent{
+.colorComponent{
     display: flex;
     justify-content: flex-start;
 }
 
-.ColorPicker {
+.colorPicker {
     width:30px;
     height:30px;
     overflow: hidden;
@@ -27,4 +27,13 @@ input[type='color'] {
 .errorMsg{
     color: red;
     font-weight: 800;
+}
+
+.line{
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color: black;
+    height: 1px;
 }

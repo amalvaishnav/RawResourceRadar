@@ -1,57 +1,57 @@
 import { useContext, useEffect, useState } from "react";
 import "./ResourceForm.css";
 import { Context } from "../ResourceApp";
+import validate from "./validate";
 
-const ResourceForm = () => {
-  const initialFormValues = { name: "", color: "", vol: 0, cost: 0 };
+const ResourceForm = ({ clickedItem }) => {
+  const initialFormValues = {
+    name: "",
+    color: "",
+    vol: 0,
+    cost: 0,
+  };
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState({});
+  const [currentMode, setCurrentMode] = useState("Create");
 
+  //Hook to determine if any of the item from list, if clicked then it will
+  //set the mode to Update/Delete and clearing all the Form fields
+  useEffect(() => {
+    if (Object.keys(clickedItem).length !== 0) {
+      setFormValues({
+        name: clickedItem.name,
+        color: clickedItem.color,
+        vol: clickedItem.vol,
+        cost: clickedItem.cost,
+      });
+      setCurrentMode("Update");
+    }
+  }, [clickedItem]);
+
+  //HandleChange for each input fields and keep adding them to formValues until the submit button is clicked
   const handleChange = (e) => {
-    // console.log("handleChange came", e);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    // console.log(formValues);
   };
 
+  //Using the context created in the main component
   const [context, setContext] = useContext(Context);
 
-  const validate = async (values) => {
-    console.log("came into valkidate", values);
-    let errors = {};
-    if (!values.name) {
-      errors.name = "Please enter name";
-    }
-    if (!values.color) {
-      errors.color = "Please select or enter Color";
-    }
-    const colorRegexp = /^#[0-9a-fA-F]{6}$/;
-    // console.log("regexp test", colorRegexp.test(values.color));
-    if (values.color && colorRegexp.test(values.color) == false) {
-      errors.color =
-        "Please select or enter color in #00ffaa or #00FFAA format";
-    }
-    if (!values.vol) {
-      errors.vol = "Please enter Vol";
-    }
-    if (!values.cost) {
-      errors.cost = "Please enter Cost";
-    }
-    console.log("end", errors);
-    return errors;
-  };
+  //   HandleSubmit function for Newly Create or Update the record
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("e", e, "isSubmit", isSubmit);
     const invalidValues = await validate(formValues);
 
-    setFormErrors(invalidValues);
-    console.log("bfore fetch", formErrors, invalidValues);
-    if (Object.keys(invalidValues).length == 0) {
-      console.log("no form errors ");
+    setFormErrors(invalidValues); //Setting formError state to keep adding it for mentioning error messages in the span tags below
+
+    if (Object.keys(invalidValues).length === 0) {
+      const url =
+        currentMode === "Update"
+          ? `http://localhost:5001/data/${clickedItem._id}`
+          : "http://localhost:5001/data/";
       try {
-        let res = await fetch("http://localhost:5001/data", {
-          method: "POST",
+        let res = await fetch(url, {
+          method: currentMode === "Update" ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -65,11 +65,7 @@ const ResourceForm = () => {
 
         let response = await res.json();
         if (res.status === 200) {
-          console.log(res);
-          console.log("User created");
-          setContext([...context, res.name]);
-        } else {
-          console.log("User not created");
+          setContext([...context, res.name]); // Checking if context is changed, if so it will send that prompt via context to Main component
         }
       } catch (err) {
         console.log(err);
@@ -77,27 +73,54 @@ const ResourceForm = () => {
     }
   };
 
+  //Function to call when New record add button gets pressed hence clearing form values and give ability to enter data again
+  const createRecord = () => {
+    clickedItem = {};
+    setFormValues(initialFormValues);
+    setCurrentMode("Create");
+  };
+
+  //Function to tackle deleting the record
+  const handleDelete = async (e) => {
+    setFormValues(initialFormValues);
+    try {
+      let res = await fetch(`http://localhost:5001/data/${clickedItem._id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      let response = await res.json();
+      if (res.status === 200) {
+        setContext([...context, res.name]); // Checking if context is changed, if so it will send that prompt via context to Main component
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <div className="ResourceForm">
-      <form onSubmit={handleSubmit} className="Form">
+    <div className="resourceForm">
+      <form onSubmit={handleSubmit} className="form">
+        <sub>Name</sub>
         <input
           type="text"
           name="name"
           value={formValues.name}
           placeholder="Name"
-          //   onChange={(e) => setName(e.target.value)}
           onChange={handleChange}
         />
         <span className="errorMsg">{formErrors.name}</span>
         <br />
-        <div className="ColorComponent">
-          <div className="ColorPicker">
+
+        <div className="colorComponent">
+          <div className="colorPicker">
             <input
               type="color"
               name="color"
               value={formValues.color}
               placeholder="Color"
-              //   onChange={(e) => setColor(e.target.value)}
               onChange={handleChange}
             />
           </div>
@@ -106,38 +129,46 @@ const ResourceForm = () => {
             value={formValues.color}
             placeholder="Color"
             name="color"
-            // onKeyPress={onKeyPress}
-            // onChange={(e) => setColor(e.target.value)}
-            onChange={handleChange}
           />
         </div>
         <span className="errorMsg">{formErrors.color}</span>
         <br />
+        <sub>Volume (Cubic Meters)</sub>
         <input
           placeholder="Volume (sq m)"
           type="number"
           name="vol"
+          step="100"
           value={formValues.vol}
-          //   onChange={handleVolChange}
           onChange={handleChange}
         />
         <span className="errorMsg">{formErrors.vol}</span>
         <br />
 
+        <sub>Cost ( per cubic meter)</sub>
         <input
           placeholder="Cost"
           type="number"
+          step="0.1"
           value={formValues.cost}
           name="cost"
-          //   onChange={handleCostChange}
           onChange={handleChange}
         />
+
         <span className="errorMsg">{formErrors.cost}</span>
         <br />
-        <button type="submit">Create</button>
 
-        {/* <div className="message">{message ? <p>{message}</p> : null}</div> */}
+        <hr className="line" />
+        <button type="submit">{currentMode}</button>
+        <br />
       </form>
+      {currentMode === "Update" && (
+        <>
+          <button onClick={createRecord}>Create New</button>
+          <br />
+          <button onClick={handleDelete}>Delete</button>
+        </>
+      )}
     </div>
   );
 };

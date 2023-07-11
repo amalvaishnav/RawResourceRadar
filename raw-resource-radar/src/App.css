@@ -1,4 +1,4 @@
-.ResourceApp{
+.resourceApp{
   margin: auto 32px;
   background-color: #ffa500;
   border-radius: 20px;
@@ -9,7 +9,7 @@
   margin-left: 32px;
 }
 
-.ResourceSection{
+.resourceSection{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -18,49 +18,65 @@
   padding-bottom: 32px;
 }
 
-.ResourceContent{
+.resourceContent{
   margin:auto;
   display: flex;
-  min-width: 400px;
   justify-content: space-between;
   border: 2px solid black;
+  flex-direction: column-reverse;
+  border-radius: 5px;
 
-  @media screen and (min-width: 400px) and (max-width: 768px) {
-    min-width: 500px;
-    flex-direction: column;
+  @media screen and (min-width: 600px) and (max-width: 768px) {
+    flex-direction: row;
   }
 
   @media screen and (min-width: 769px) and (max-width: 968px) {
     min-width: 600px;
+    flex-direction: row;
   }
 
   @media screen and (min-width: 1024px) {
     min-width: 800px;
+    flex-direction: row;
   }
 }
 
 
-.ResourceList{
+.resourceList{
   min-width: 180px;
   border-right: 1px solid black;
 }
-.ResourceForm{
+.resourceForm{
   margin: auto;
   margin-top: 24px;
 }
 
-.Form{
+.form{
   display: flex;
   flex-direction: column;
 }
 
-.Tile{
-  padding-bottom: 16px;
+.tile{
   border-bottom: 1px solid black;
   display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.Tile:hover{
+.tile:hover{
   background-color: black;
   color: white;
+  border: 3px black solid;
+}
+.infoSection{
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.colorDiv{
+  width: 40%;
+  display: block;
 }
