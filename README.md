@@ -48,18 +48,18 @@ Platform to manage and calculate expenses of raw materials
 * POST http://localhost:5001/data (To create new data)
   * Body {
     "name":"56776",
-    "color":"56fg",
+    "color":"#2256fc",
     "vol": 3434,
     "cost": 0.5
     }
- * PUT http://localhost:5001/:id (To update the data)
+ * PUT http://localhost:5001/data/:id (To update the existing data)
     * Body {
        "name":"56776",
-       "color":"56fg",
+       "color":"#2256fc",
        "vol": 3434,
        "cost": 0.5
        }
- * DELETE http://localhost:5001/:id (TO delete the data)
+ * DELETE http://localhost:5001/data/:id (TO delete the data)
 
 # Database (in-memory)
 * We utilized in-memory `mongodb-memory-server` node module which enables us to manipulate `MongoDB(no-sql)` data in-memory.
