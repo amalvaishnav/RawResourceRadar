@@ -44,22 +44,22 @@ Platform to manage and calculate expenses of raw materials
 * To make that happen we used fundamental REST principals GET(to read), POST(to submit), PUT(to update) and DELETE(to delete) to manipulate data.
 
 # APIs
-* GET http://localhost:5001/data
-* POST http://localhost:5001/data
+* GET http://localhost:5001/data (Read the data)
+* POST http://localhost:5001/data (To create new data)
   * Body {
     "name":"56776",
     "color":"56fg",
     "vol": 3434,
     "cost": 0.5
     }
- * PUT http://localhost:5001/:id
+ * PUT http://localhost:5001/:id (To update the data)
     * Body {
        "name":"56776",
        "color":"56fg",
        "vol": 3434,
        "cost": 0.5
        }
- * DELETE http://localhost:5001/:id
+ * DELETE http://localhost:5001/:id (TO delete the data)
 
 # Database (in-memory)
 * We utilized in-memory `mongodb-memory-server` node module which enables us to manipulate `MongoDB(no-sql)` data in-memory.
