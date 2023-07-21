@@ -62,8 +62,8 @@ const ResourceForm = ({ clickedItem }) => {
             cost: formValues.cost,
           }),
         });
-
-        let response = await res.json();
+        // @ts-ignore
+        // let response = await res.json()
         if (res.status === 200) {
           setContext([...context, res.name]); // Checking if context is changed, if so it will send that prompt via context to Main component
         }
@@ -91,7 +91,7 @@ const ResourceForm = ({ clickedItem }) => {
         },
       });
 
-      let response = await res.json();
+      // let response = await res.json();
       if (res.status === 200) {
         setContext([...context, res.name]); // Checking if context is changed, if so it will send that prompt via context to Main component
       }
